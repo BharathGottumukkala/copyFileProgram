@@ -72,7 +72,8 @@ def copyFiles(srcPath: str, destPath: str = None):
 		raise Exception('Please provide a source File and a destination folder/file')
 	# Convert srcPath and destPath to absolute paths and remove any symlinks
 	srcExists, srcSymLink, srcFile = resolvePath(srcPath)
-	srcFileSize = srcFile.stat().st_size
+	if srcExists:
+		srcFileSize = srcFile.stat().st_size
 	destExists, destSymLink, destFile = resolvePath(destPath)
 
 	# If destination is a file name and that file doesnot exist - showing error
